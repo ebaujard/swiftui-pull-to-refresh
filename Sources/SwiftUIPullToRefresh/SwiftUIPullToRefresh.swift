@@ -23,7 +23,9 @@ private struct PositionPreferenceKey: PreferenceKey {
   static var defaultValue = [Position]()
 
   static func reduce(value: inout [Position], nextValue: () -> [Position]) {
-    value.append(contentsOf: nextValue())
+    if (nextValue()) {
+      value.append(contentsOf: nextValue())
+    }
   }
 }
 
